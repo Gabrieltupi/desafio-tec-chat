@@ -9,17 +9,17 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-/* app.get('/', (req,res) => {
-    res.send('Backend rodando!');
-}); */
-
 const messagesRouter =require('./routes/messages');
 app.use('/messages', messagesRouter);
+
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
 
 db.sequelize.authenticate()
   .then(() => {
     console.log('Conectado ao banco de dados Postgres com sucesso!');
-    return db.sequelize.sync();  // cria as tabelas automaticamente (não apaga dados)
+    return db.sequelize.sync();  
   })
   .then(() => {
     app.listen(PORT, () => {

@@ -6,7 +6,7 @@ exports.listMessages= async (req,res) => {
         res.status(200).json(messages);
     } catch (err) {
         console.error(err);
-        res.status(500).json({error: 'Erro ao buscar mensagem'});
+    res.status(500).json({error: err.message || 'Erro ao buscar mensagem'});
     }
 };
 
@@ -18,6 +18,6 @@ exports.createMessage = async (req, res) => {
         res.status(201).json(result);
     } catch (err){
         console.error(err);
-        res.status(500).json({error: 'Erro ao criar mensagem'});
+        res.status(500).json({error: err.message ||'Erro ao criar mensagem'});
     }
 };
