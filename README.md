@@ -32,7 +32,7 @@ backend/
 ├── app.js                 # Entrada principal do backend
 
 
-🎨 Frontend (/frontend)
+ Frontend (/frontend)
 Construído com React.js + Material UI 14.
 
 Estrutura:
