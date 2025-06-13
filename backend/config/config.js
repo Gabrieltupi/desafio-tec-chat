@@ -12,7 +12,8 @@ module.exports = {
       ssl: {
         require: true,
         rejectUnauthorized: false,
-      }
+      },
+      family: 4 
     }
   }
 };
