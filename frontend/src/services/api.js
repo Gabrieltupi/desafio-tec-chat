@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000'; 
+const API_URL = 'https://desafio-tec-chat-backend.onrender.com'; 
 
 export const getMessages = async () => {
   const res = await axios.get(`${API_URL}/messages/`);
