@@ -10,7 +10,7 @@ app.use(express.json());
 
 const messagesRouter = require('./routes/messages');
 app.use('/messages', messagesRouter);
-
+console.log(' NODE_ENV', process.env.NODE_ENV)
 db.sequelize.authenticate()
   .then(() => {
     console.log('Conectado ao banco de dados Postgres com sucesso!');
