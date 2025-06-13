@@ -7,7 +7,7 @@ const ChatPage = () => {
   return (
     <>
       <Header />
-      <Container maxWidth="sm" sx={{ mt: 4 }}>
+      <Container maxWidth="md" sx={{ px: 2 }}>
         <ChatWindow />
       </Container>
     </>

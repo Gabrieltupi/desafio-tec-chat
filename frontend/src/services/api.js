@@ -7,9 +7,9 @@ export const getMessages = async () => {
   return res.data;
 };
 
-export const sendMessage = async (content) => {
+export const sendMessage = async (text) => {
   const res = await axios.post(`${API_URL}/messages/`, {
-    content,
+    content: text,
     isUser: true,
   });
   return res.data;

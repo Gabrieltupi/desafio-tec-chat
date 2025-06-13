@@ -1,28 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { Paper, Box } from '@mui/material';
 import MessageList from './MessageList';
 import MessageInput from './MessageInput';
-import { getMessages, sendMessage } from '../services/api';
+import {getMessages, sendMessage } from '../services/api';
 
 const ChatWindow = () => {
   const [messages, setMessages] = useState([]);
 
-  const loadMessages = async () => {
-    const res = await getMessages();
-    setMessages(res);
-  };
-
-  useEffect(() => {
-    loadMessages();
-  }, []);
-
   const handleSend = async (text) => {
-    const userMsg = await sendMessage(text);
-    setMessages((prev) => [...prev, userMsg, { content: 'Mensagem recebida com sucesso!', isUser: false }]);
-  };
+  try {
+    const { userMessage, botMessage } = await sendMessage(text);
+
+    setMessages((prev) => [
+      ...prev,
+      userMessage,
+      { content: botMessage, isUser: false }
+    ]);
+  } catch (error) {
+    console.error('Erro ao enviar mensagem:', error);
+    setMessages((prev) => [
+      ...prev,
+      { content: 'Erro ao enviar mensagem.', isUser: false }
+    ]);
+  }
+};
 
   return (
-    <Paper sx={{ height: '80vh', display: 'flex', flexDirection: 'column' }}>
+    <Paper sx={{ height: 'calc(100vh - 64px)', display: 'flex', flexDirection: 'column', width: '100%', p: 2 }}>
       <MessageList messages={messages} />
       <MessageInput onSend={handleSend} />
     </Paper>
